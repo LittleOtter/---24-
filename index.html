@@ -1,0 +1,443 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>手风琴特效</title>
+    <meta name="Author" content="Sookie">
+    <meta name="description" content="">
+    <meta name="keywords" content="">
+    <style>
+        body,div,ul,li,p{margin: 0;padding: 0;}
+        ul{list-style: none;}
+        body,html{height: 100%;}
+        body{background: url("images/bg.jpg") no-repeat center / 100%;font-size: 12px;font-family: "Microsoft YaHei",sans-serif;}
+        #wrap{
+            width: 100%;
+            min-width: 1100px;
+            height: 100%;
+        }
+        .axis{
+            float: left;
+            position: relative;
+            width: 14%;
+            height: 100%;
+            min-width: 72px;
+            min-height: 400px;
+            background-color: #000;
+            background-color: rgba(0,0,0,.3);
+        }
+        .ax-content{
+            position: absolute;
+            top: 50px;
+            left: 0;
+            right: 0;
+            width: 72px;
+            height: 330px;
+            margin: auto;
+        }
+        .init{
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            width: 40px;
+            height: 2px;
+            margin: auto;
+            background-color: #fff;
+        }
+        .a-part{
+            position: relative;
+            cursor: pointer;
+        }
+        .dot{
+            display: block;
+            position: relative;
+            width: 10px;
+            height: 10px;
+            margin: 40px auto 0;
+            border: 2px solid #fff;
+            border-radius: 50%;
+            cursor: pointer;
+        }
+        .dot:before{
+            content: '';
+            position: absolute;
+            top: -40px;
+            left: 4px;
+            width: 1px;
+            height: 36px;
+            background-color: #fff;
+        }
+        .num{
+            position: absolute;
+            top: -2px;
+            right: 0;
+            width: 18px;
+            height: 18px;
+            background-color: #fff;
+            color: #000;
+            color: rgba(0,0,0,.3);
+            text-align: center;
+            line-height: 18px;
+        }
+        .even{
+            left: 0;
+        }
+        .a-part:hover .dot,
+        .a-part:hover .num,
+        .on{
+            background-color: #dabe84;
+            border-color: #dabe84;
+        }
+        .disp{
+            float: left;
+            position: relative;
+            width: 86%;
+            height: 100%;
+            min-width: 900px;
+            min-height: 400px;
+        }
+        .dis-content{
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            width: 900px;
+            height: 400px;
+            margin: auto;
+            overflow: hidden;
+        }
+        .d-list{
+            display: none;
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 400%;
+            height: 100%;
+        }
+        .d-list:first-child{
+            display: block;
+        }
+        .d-opt{
+            float: left;
+            width: 100px;
+            height: 100%;
+        }
+        .l-opt{
+            width: 600px;
+        }
+        .sign{
+            width: 100px;
+            height: 100%;
+            background-color: #000;
+            background-color: rgba(0,0,0,.4);
+        }
+        .title{
+            width: 100%;
+            height: 75%;
+            background-color: rgba(0,0,0,.6);
+        }
+        .word{
+            display: inline-block;
+            width: 15px;
+            padding: 30px 0 0 43px;
+            font-size: 14px;
+            color: #fff;
+        }
+    </style>
+</head>
+<body>
+    <div id="wrap">
+        <!-- the naver -->
+        <div class="axis">
+            <div class="ax-content">
+                <i class="init"></i>
+                <div class="a-part">
+                    <i class="dot on"></i>
+                    <span class="num on">4</span>
+                </div>
+                <div class="a-part">
+                    <i class="dot"></i>
+                    <span class="num even">8</span>
+                </div>
+                <div class="a-part">
+                    <i class="dot"></i>
+                    <span class="num">12</span>
+                </div>
+                <div class="a-part">
+                    <i class="dot"></i>
+                    <span class="num even">16</span>
+                </div>
+                <div class="a-part">
+                    <i class="dot"></i>
+                    <span class="num">20</span>
+                </div>
+                <div class="a-part">
+                    <i class="dot"></i>
+                    <span class="num even">24</span>
+                </div>
+            </div>
+        </div>
+        <!-- display area -->
+        <div class="disp">
+            <div class="dis-content">
+                <ul class="d-list">
+                    <li class="d-opt l-opt" style="background: url('images/1.jpg') no-repeat 0 0 / cover;">
+                        <div class="sign">
+                            <p class="title">
+                                <span class="word">
+                                    立春 <b>—</b> 立春一日 &nbsp; 百草回芽
+                                </span>
+                            </p>
+                        </div>
+                    </li>
+                    <li class="d-opt" style="background: url('images/2.jpg') no-repeat 0 0 / cover;">
+                        <div class="sign">
+                            <p class="title">
+                                <span class="word">
+                                    雨水 <b>—</b> 七九河开 &nbsp; 八九雁来
+                                </span>
+                            </p>
+                        </div>
+                    </li>
+                    <li class="d-opt" style="background: url('images/3.jpg') no-repeat 0 0 / cover;">
+                        <div class="sign">
+                            <p class="title">
+                                <span class="word">
+                                    惊蛰 <b>—</b> 一雷惊蛰 &nbsp; 万物生长
+                                </span>
+                            </p>
+                        </div>
+                    </li>
+                    <li class="d-opt" style="background: url('images/4.jpg') no-repeat 0 0 / cover;">
+                        <div class="sign">
+                            <p class="title">
+                                <span class="word">
+                                    春分 <b>—</b> 江山丽 &nbsp; 花草香
+                                </span>
+                            </p>
+                        </div>
+                    </li>
+                </ul>
+                <ul class="d-list">
+                    <li class="d-opt l-opt" style="background: url('images/5.jpg') no-repeat 0 0 / cover;">
+                        <div class="sign">
+                            <p class="title">
+                                <span class="word">
+                                    清明 <b>—</b> 寒食祭祖 &nbsp; 踏青采椿
+                                </span>
+                            </p>
+                        </div>
+                    </li>
+                    <li class="d-opt" style="background: url('images/6.jpg') no-repeat 0 0 / cover;">
+                        <div class="sign">
+                            <p class="title">
+                                <span class="word">
+                                    谷雨 <b>—</b> 雨前茶香 &nbsp; 牡丹倾城
+                                </span>
+                            </p>
+                        </div>
+                    </li>
+                    <li class="d-opt" style="background: url('images/7.jpg') no-repeat 0 0 / cover;">
+                        <div class="sign">
+                            <p class="title">
+                                <span class="word">
+                                    立夏 <b>—</b> 樱桃红 &nbsp; 青梅熟 &nbsp; 夏日长
+                                </span>
+                            </p>
+                        </div>
+                    </li>
+                    <li class="d-opt" style="background: url('images/8.jpg') no-repeat 0 0 / cover;">
+                        <div class="sign">
+                            <p class="title">
+                                <span class="word">
+                                    小满 <b>—</b> 蚕神诞辰 &nbsp; 吃苦养生
+                                </span>
+                            </p>
+                        </div>
+                    </li>
+                </ul>
+                <ul class="d-list">
+                    <li class="d-opt l-opt" style="background: url('images/9.jpg') no-repeat 0 0 / cover;">
+                        <div class="sign">
+                            <p class="title">
+                                <span class="word">
+                                    芒种 <b>—</b> 送花神 &nbsp; 煮青梅
+                                </span>
+                            </p>
+                        </div>
+                    </li>
+                    <li class="d-opt" style="background: url('images/10.jpg') no-repeat 0 0 / cover;">
+                        <div class="sign">
+                            <p class="title">
+                                <span class="word">
+                                    夏至 <b>—</b> 鹿角解 &nbsp; 蝉始鸣 &nbsp; 半夏生
+                                </span>
+                            </p>
+                        </div>
+                    </li>
+                    <li class="d-opt" style="background: url('images/11.jpg') no-repeat 0 0 / cover;">
+                        <div class="sign">
+                            <p class="title">
+                                <span class="word">
+                                    小暑 <b>—</b> 三伏始入 &nbsp; 茉莉飘香
+                                </span>
+                            </p>
+                        </div>
+                    </li>
+                    <li class="d-opt" style="background: url('images/12.jpg') no-repeat 0 0 / cover;">
+                        <div class="sign">
+                            <p class="title">
+                                <span class="word">
+                                    大暑 <b>—</b> 腐草为萤 &nbsp; 土润溽暑
+                                </span>
+                            </p>
+                        </div>
+                    </li>
+                </ul>
+                <ul class="d-list">
+                    <li class="d-opt l-opt" style="background: url('images/13.jpg') no-repeat 0 0 / cover;">
+                        <div class="sign">
+                            <p class="title">
+                                <span class="word">
+                                    立秋 <b>—</b> 贴秋瞟 &nbsp; 吃福圆
+                                </span>
+                            </p>
+                        </div>
+                    </li>
+                    <li class="d-opt" style="background: url('images/14.jpg') no-repeat 0 0 / cover;">
+                        <div class="sign">
+                            <p class="title">
+                                <span class="word">
+                                    处暑 <b>—</b> 暑气将尽 &nbsp; 天地始肃
+                                </span>
+                            </p>
+                        </div>
+                    </li>
+                    <li class="d-opt" style="background: url('images/15.jpg') no-repeat 0 0 / cover;">
+                        <div class="sign">
+                            <p class="title">
+                                <span class="word">
+                                    白露 <b>—</b> 凉意渐浓 &nbsp; 露凝而白
+                                </span>
+                            </p>
+                        </div>
+                    </li>
+                    <li class="d-opt" style="background: url('images/16.jpg') no-repeat 0 0 / cover;">
+                        <div class="sign">
+                            <p class="title">
+                                <span class="word">
+                                    秋分 <b>—</b> 螃蟹肥 &nbsp; 菱角鲜
+                                </span>
+                            </p>
+                        </div>
+                    </li>
+                </ul>
+                <ul class="d-list">
+                    <li class="d-opt l-opt" style="background: url('images/17.jpg') no-repeat 0 0 / cover;">
+                        <div class="sign">
+                            <p class="title">
+                                <span class="word">
+                                    寒露 <b>—</b> 袅袅凉风动 &nbsp; 凄凄寒露零
+                                </span>
+                            </p>
+                        </div>
+                    </li>
+                    <li class="d-opt" style="background: url('images/18.jpg') no-repeat 0 0 / cover;">
+                        <div class="sign">
+                            <p class="title">
+                                <span class="word">
+                                    霜降 <b>—</b> 秋雨透地 &nbsp; 寒霜来迟
+                                </span>
+                            </p>
+                        </div>
+                    </li>
+                    <li class="d-opt" style="background: url('images/19.jpg') no-repeat 0 0 / cover;">
+                        <div class="sign">
+                            <p class="title">
+                                <span class="word">
+                                    立冬 <b>—</b> 天水清相入 &nbsp; 秋冬气始交
+                                </span>
+                            </p>
+                        </div>
+                    </li>
+                    <li class="d-opt" style="background: url('images/20.jpg') no-repeat 0 0 / cover;">
+                        <div class="sign">
+                            <p class="title">
+                                <span class="word">
+                                    小雪 <b>—</b> 落雨落雪 &nbsp; 无休无歇
+                                </span>
+                            </p>
+                        </div>
+                    </li>
+                </ul>
+                <ul class="d-list">
+                    <li class="d-opt l-opt" style="background: url('images/21.jpg') no-repeat 0 0 / cover;">
+                        <div class="sign">
+                            <p class="title">
+                                <span class="word">
+                                    大雪 <b>—</b> 千山凋敝 &nbsp; 万河彻冰
+                                </span>
+                            </p>
+                        </div>
+                    </li>
+                    <li class="d-opt" style="background: url('images/22.jpg') no-repeat 0 0 / cover;">
+                        <div class="sign">
+                            <p class="title">
+                                <span class="word">
+                                    冬至 <b>—</b> 宵寒日短 &nbsp; 霜雪竞开
+                                </span>
+                            </p>
+                        </div>
+                    </li>
+                    <li class="d-opt" style="background: url('images/23.jpg') no-repeat 0 0 / cover;">
+                        <div class="sign">
+                            <p class="title">
+                                <span class="word">
+                                    小寒 <b>—</b> 千雪入千杯 &nbsp; 寒夜日醒迟
+                                </span>
+                            </p>
+                        </div>
+                    </li>
+                    <li class="d-opt" style="background: url('images/24.jpg') no-repeat 0 0 / cover;">
+                        <div class="sign">
+                            <p class="title">
+                                <span class="word">
+                                    大寒 <b>—</b> 晨光细微 &nbsp; 风雪千重
+                                </span>
+                            </p>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <script src="https://cdn.bootcss.com/jquery/3.3.1/jquery.min.js"></script>
+    <script>
+        $(function () {
+            var $ul = $(".d-list"),
+                $li = $(".d-list .d-opt"),
+                $nav = $(".a-part"),
+                $dot = $(".dot"),
+                $num = $(".num");
+
+            $nav.click(function () {
+                var index = $nav.index($(this));
+                $dot.removeClass("on").eq(index).addClass("on");
+                $num.removeClass("on").eq(index).addClass("on");
+                $ul.fadeOut( 500 ).eq(index).fadeIn( 500 );
+            });
+
+            $li.mouseenter(function () {
+                $(this).addClass("l-opt").stop().animate({
+                    width : 600
+                }, 500).siblings(".l-opt").removeClass("l-opt").stop().animate({
+                    width : 100
+                }, 500);
+            });
+        });
+    </script>
+</body>
+</html>
